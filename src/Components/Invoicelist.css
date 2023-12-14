@@ -1,0 +1,11 @@
+.edit:hover {
+  background-color: black;
+}
+
+.view:hover {
+  background-color: black;
+}
+
+.del:hover {
+  background-color: red;
+}
