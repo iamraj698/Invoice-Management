@@ -83,13 +83,13 @@ function EditInvoice() {
     const dueDate = new Date(formData.duedate);
     const currentDate = new Date();
 
-  // Check if the payment status is true (paid) or the current date is before the due date
-  if (paymentStatus || currentDate <= dueDate) {
-    return false; // Not overdue
-  }
+    // Check if the payment status is true (paid) or the current date is before the due date
+    if (paymentStatus || currentDate <= dueDate) {
+      return false; // Not overdue
+    }
 
-  return true; // Overdue
-};
+    return true; // Overdue
+  };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -107,7 +107,7 @@ function EditInvoice() {
         0
       );
 
-      // const submittedDate = new Date().toISOString();
+      const submittedDate = new Date().toISOString();
 
       const res = await fetch(
         `https://db-user-auth-default-rtdb.firebaseio.com/invoice/${id}.json`,
@@ -123,7 +123,7 @@ function EditInvoice() {
             duedate,
             products,
             grandTotal: calculateGrandTotal(),
-            // submittedDate,
+            submittedDate,
             adjustment,
             finalTotal: productsTotal,
             paymentStatus,
@@ -142,13 +142,12 @@ function EditInvoice() {
     }
   };
 
-
   return (
-    <div  className="container-fluide d-flex align-items-center justify-content-center bg-light">
-      <div className=" p-5 w-100 mt-4"  >
+    <div className="container-fluide d-flex align-items-center justify-content-center bg-light">
+      <div className=" p-5 w-100 mt-4">
         <form onSubmit={handleFormSubmit}>
           <h2 className="d-flex justify-content-center mb-3">Edit Invoice</h2>
-        <div className="row mb-3">
+          <div className="row mb-3">
             <div className="col">
               <label className="form-label">Invoice For: </label>
               <input
@@ -296,12 +295,12 @@ function EditInvoice() {
               <label className="form-label">Payment Status:</label>
             </div>
             <div className="col">
-            <input
-  type="checkbox"
-  name="paymentStatus"
-  checked={paymentStatus}
-  onChange={(e) => setPaymentStatus(e.target.checked)}
-/>
+              <input
+                type="checkbox"
+                name="paymentStatus"
+                checked={paymentStatus}
+                onChange={(e) => setPaymentStatus(e.target.checked)}
+              />
               <label className="form-check-label"> Mark as Paid</label>
             </div>
           </div>

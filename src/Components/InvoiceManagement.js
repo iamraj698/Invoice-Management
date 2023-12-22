@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 import "./Invoice.css";
 import html2pdf from "html2pdf.js";
@@ -28,7 +28,7 @@ function InvoiceManagement() {
   const [products, setProducts] = useState([
     { description: "", qty: "", unitprice: "", total: 0 },
   ]);
-  const [showPreview, setShowPreview] = useState(false);
+  // const [showPreview, setShowPreview] = useState(false);
 
   useEffect(() => {
     // Fetch existing invoice details
@@ -71,7 +71,7 @@ function InvoiceManagement() {
       jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
     });
 
-    setShowPreview(true);
+    // setShowPreview(true);
   };
 
   // const handleClosePreview = () => {

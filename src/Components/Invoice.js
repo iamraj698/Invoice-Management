@@ -82,7 +82,6 @@ function Invoice() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const { invoicefor, name, project, duedate } = formData;
-
     const hasIncompleteProduct = products.some(
       (product) =>
         product.description.trim() === "" ||
